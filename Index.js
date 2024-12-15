@@ -81,12 +81,12 @@ app.get('/logout', function (req, res) {
 
 
 app.get('/notemaster', function (req, res) {
-    res.render('../views/notemaster')
+    res.render('../Views/notemaster')
 })
 
 
 app.get('/user-signup', function (req, res) {
-    res.render('../views/user-signup')
+    res.render('../Views/user-signup')
 })
 
 
@@ -128,7 +128,7 @@ app.post('/user-signup', upload.single('Profile_Image'), async function (req, re
 })
 
 app.get('/user-login', function (req, res) {
-    res.render('../views/user-login')
+    res.render('../Views/user-login')
 })
 
 app.post('/user-login', async function (req, res) {
@@ -176,13 +176,13 @@ app.get('/user-dashboard', auth, async function (req, res) {
         options: { sort: { _id: -1 } },
     });
 
-    res.render('../views/user-dashboard', { userSource })
+    res.render('../Views/user-dashboard', { userSource })
 })
 
 
 app.get('/user-dashboard/new-note', auth, async function (req, res) {
 
-    res.render('../views/insert-note')
+    res.render('../Views/insert-note')
 })
 
 
@@ -245,7 +245,7 @@ app.post('/user-dashboard/new-note', auth, upload.single('Note_PDF'), async func
 
 app.get('/user-dashboard/view-note/:id', async function (req, res) {
     const noteSource = await note_model.findById(req.params.id)
-    res.render('../views/view-note', { noteSource })
+    res.render('../Views/view-note', { noteSource })
 })
 
 app.get('/user-dashboard/note-delete/:id', async function (req, res) {
@@ -258,7 +258,7 @@ app.get('/user-dashboard/note-delete/:id', async function (req, res) {
 app.get('/notemaster/user-dashboard/edit-note/:id', async function (req, res) {
 
     const editNote = await note_model.findById(req.params.id)
-    res.render('../views/edit-note', { editNote })
+    res.render('../Views/edit-note', { editNote })
 })
 
 
@@ -286,7 +286,7 @@ app.get('/user-dashboard/pinned-note', auth, async function (req, res) {
     const userSource = await user_signup_model.findById(userID).populate('Note');
     const pinnedNote = userSource.Note.filter((note) => note.Status === 'Pin')
 
-    res.render('../views/pinned-dashboard', { pinnedNote })
+    res.render('../Views/pinned-dashboard', { pinnedNote })
 })
 
 
@@ -338,7 +338,7 @@ app.get('/user-dashboard/profile/edit', auth, async function (req, res) {
 
     const userID = req.userId;
     const userSource = await user_signup_model.findById(userID)
-    res.render('../views/edit-user', { userSource })
+    res.render('../Views/edit-user', { userSource })
 })
 
 app.post('/user-dashboard/profile/edit', upload.single('Profile_Image'), auth, async function (req, res) {
@@ -362,7 +362,7 @@ app.post('/user-dashboard/profile/edit', upload.single('Profile_Image'), auth, a
 
 app.get('/forget-password', async function (req, res) {
 
-    res.render('../views/forget-password.ejs')
+    res.render('../Views/forget-password.ejs')
 })
 
 app.post('/forget-password', async function (req, res) {
@@ -412,7 +412,7 @@ app.post('/forget-password', async function (req, res) {
 
 app.get('/reset-password/:id', async function (req, res) {
 
-    res.render('../views/reset-password.ejs')
+    res.render('../Views/reset-password.ejs')
 })
 
 app.post('/reset-password/:id', async function (req, res) {
