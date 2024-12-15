@@ -385,7 +385,7 @@ app.post('/forget-password', async function (req, res) {
             from: 'thelearningworld20@gmail.com',
             to: userEmail.Email,
             subject: 'Reset Your Password',
-            text: `Click the following link to reset your password: https://localhost:3000/Reset-Password/${userEmail._id}`
+            text: `Click the following link to reset your password: https://https://notemaster-9fok.onrender.com/Reset-Password/${userEmail._id}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
@@ -405,8 +405,6 @@ app.post('/forget-password', async function (req, res) {
         req.flash('error', ' Sorry ! You have not signup yet');
         return res.redirect('forget-password')
     }
-
-
 })
 
 
