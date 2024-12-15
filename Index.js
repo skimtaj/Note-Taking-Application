@@ -420,7 +420,7 @@ app.post('/reset-password/:id', async function (req, res) {
     userEmail.Password = Password;
     await userEmail.save();;
     req.flash('password Reset Successfully')
-    return res.redirect('/user-dashboard')
+    return res.redirect('/user-login')
 })
 
 
