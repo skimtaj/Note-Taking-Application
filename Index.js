@@ -330,7 +330,7 @@ app.get('/user-dashboard/profile', auth, async function (req, res) {
 
     const userID = req.userId;
     const userSource = await user_signup_model.findById(userID)
-    res.render('../views/user-profile', { userSource })
+    res.render('../Views/user-profile', { userSource })
 })
 
 
